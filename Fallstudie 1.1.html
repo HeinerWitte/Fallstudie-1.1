@@ -1,0 +1,204 @@
+<!doctype html>
+  <html lang="de">
+    <head>
+      <title>Fallstudie | Aufgabenstellung 1.1</title>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+      <link rel="stylesheet" href="dashboard.css">
+      
+      <style>
+        footer {text-align: center;
+        padding: 3px;
+        background-color: rgb(165, 238, 216);
+        }
+      </style>
+    </head>
+    
+    <body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="sr-only">Navigation ein-/ausblenden</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">CO<sub>2</sub>-Footprint</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Startseite</a></li>
+              <li><a href="#">Über uns</a></li>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">Kontakt</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+              <input type="text" class="form-control" placeholder="Suchen...">
+            </form>
+          </div>
+        </div>
+      </nav>
+    
+      <script type="text/javascript">
+        let user = { username: "HeinerWitte", password: "abc" };
+        document.querySelector("form").onsubmit = function() 
+        {
+        let suche = document.querySelector("input").value;
+        if (suche.length < 3) {alert("zu kurzer Suchbegriff");} 
+        else {
+        let h1 = document.querySelector("h1");
+        h1.innerText = "Suche nach \"" + suche + "\" noch nicht implementiert";
+        h1.style["background-color"] = "green";
+        }
+        return false;
+        }
+      </script>
+       
+      <div class="row">
+        <div class="flex-container">
+          <section class="flex-item">
+            <div class="col-sm-3 col-md-2 sidebar">
+              <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">CO<sub>2</sub>-Vergleich <span class="sr-only">(aktuell)</span></a></li>
+                <li><a href="#">Berichte</a></li>
+                <li><a href="#">Analysen</a></li>
+                <li><a href="#">Projekte</a></li>
+              </ul>              
+            </div>
+          </section>
+            
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <img src="Bilder/Logo.jpg" alt="Logo wird geladen" />
+            <h1 class="page-header">CO<sub>2</sub>-Emissionen</h1>
+              
+              <div class="me-3">
+                <section class="list-group">
+                  <h1 class="list-group-item mb-0">Länder und Unternehmen im Vergleich</h1>
+                  <p class="list-group-item">Der Klimawandel betrifft Deutschland ebenso, wie der Klimawandel auch von Deutschland verursacht wird. 
+                      Um einen Eindruck von einigen Verursachern zu erhalten, sind in der untenstehenden Tabelle die CO<sub>2</sub>-Emissionswerte in Mt (=1 Million Tonnen) dargestellt. 
+                      Die Werte sind auf das Jahr 2021 und 5 ausgewählte Länder bzw. Unternehmen bezogen.</p>
+                </section>
+              </div>
+              
+              <div class="row placeholders">
+                <div class="col-xs-6 col-sm-3 placeholder">
+                  <img class="img-responsive" alt="Darstellung wird geladen" src="Bilder/Deutschland.jpg" data-holder-rendered="true">
+                  <h5 align="justify-content-end">CO<sub>2</sub>-Emission Deutschland 2021</h5>
+                </div>
+                <div class="col-xs-6 col-sm-3 placeholder">
+                  <img class="img-responsive" alt="Darstellung wird geladen" src="Bilder/Ziel Deutschland.jpg" data-holder-rendered="true">
+                  <h5 align="justify-content-end">CO<sub>2</sub>-Emissionsziel für Deutschland 2045</h5>
+                </div>                
+              </div>
+    
+              <h3 class="sub-header">CO<sub>2</sub>-Tabelle</h3>
+              <div class="table table-responsive">
+                <table class="table table-sortable" id="emp-table">              
+                  
+                  <thead>
+                    <th col-index = 1>Name</th>
+                    <th col-index = 2>Emittent
+                        <select class="table-filter" onchange="filter_rows()">
+                            <option value="all"></option>
+                        </select>
+                    </th>        
+                    <th col-index = 3>CO<sub>2</sub>-Emission <br>[Mt]
+                        <select class="table-filter" onchange="filter_rows()">
+                            <option value="all"></option>
+                        </select>
+                    </th>                     
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Energie AG</td>
+                      <td>Unternehmen</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>Industrie GmbH</td>
+                      <td>Unternehmen</td>
+                      <td>4</td>
+                    </tr>
+                    <tr>
+                      <td>Verkehr GbR</td>
+                      <td>Unternehmen</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Gebäudemanagement KG</td>
+                      <td>Unternehmen</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td>Landwirtschaft OHG</td>
+                      <td>Unternehmen</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>Bayern</td>
+                      <td>Land</td>
+                      <td>73</td>
+                    </tr>
+                    <tr>
+                      <td>Niedersachsen</td>
+                      <td>Land</td>
+                      <td>60</td>
+                    </tr>
+                    <tr>
+                      <td>Saarland</td>
+                      <td>Land</td>
+                      <td>10</td>
+                    </tr>
+                    <tr>
+                      <td>Hessen</td>
+                      <td>Land</td>
+                      <td>34</td>
+                    </tr>
+                    <tr>
+                      <td>Thüringen</td>
+                      <td>Land</td>
+                      <td>15</td>
+                    </tr>
+                  </tbody>
+                </table>                
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Bootstrap-JavaScript -->
+        <!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        
+        <!-- IE10-Anzeigefenster-Hack für Fehler auf Surface und Desktop-Windows-8 -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+                 
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    
+        <script src="tablesort.js"></script>
+
+        <script src="filter.js"></script>
+
+        <script>
+          window.onload = () => {
+              console.log(document.querySelector("#emp-table > tbody > tr:nth-child(1) > td:nth-child(2) ").innerHTML);
+          };
+  
+          getUniqueValuesFromColumn()          
+        </script>
+
+        <footer class="d-flex justify-content-end py-3 my-4 border-top">
+          <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="privacy.html">Datenschutz</a></li>
+            <li class="nav-item"><a class="nav-link" href="imprint.html">Impressum</a></li>
+          </ul>
+        </footer>
+    </body>
+</html>
